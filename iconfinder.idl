@@ -1,0 +1,25 @@
+module iconfinder {
+
+	exception ServerError {};
+	
+	struct IconFinderImageData {
+		long id;
+		string url;
+		string size;
+	};
+
+	typedef sequence<iconfinder::IconFinderImageData> IconFinderImageData_seq;
+
+	struct ApiQuery {
+		string query;
+		long licence;
+		long page;
+		long perPage;
+	};
+
+	interface IconFinderApiServer {
+		IconFinderImageData_seq execute(in iconfinder::ApiQuery query) raises (ServerError);
+	};
+
+
+};
